@@ -1,0 +1,8 @@
+client:
+	g++ -g -o client test_Clinet.cpp  InetAddress.* SocketIO.* ClientSocket.*
+clean:
+	rm -rf client
+rebuild:
+	rm -rf client
+	g++ -g -o client test_Clinet.cpp  InetAddress.* SocketIO.* ClientSocket.*
+
