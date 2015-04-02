@@ -8,6 +8,7 @@
 #ifndef __FUNC_H
 #define __FUNC_H
 #include"thread_pool.h"
+#include"text.h"
 #include<iostream>
 #include<unistd.h>
 #include<stdlib.h>
@@ -31,18 +32,20 @@ namespace EXECUTE
 	class CThread_execute : public QUEUE::CQueue::CTask
 	{
 		public:
-			CThread_execute(string val) : m_val(val) {}
-			CThread_execute() {}
+			CThread_execute(string val, Text& text) : m_val(val), m_text(text) {}
+			CThread_execute(Text& text) : m_text(text) {}
 			void execute()
 			{
 				cout << "search " << m_val <<  " result is " << endl;
+				m_text.show();
 			}
 
 		private:
 			string m_val;
+			Text& m_text;
 	};
 	
-	class CRun : public THREAD::CThread_RUN, public EXECUTE::CThread_execute
+	class CRun : public THREAD::CThread_RUN
 	{
 		public:
 			CRun(QUEUE::CQueue* pq) : m_pq(pq) {}

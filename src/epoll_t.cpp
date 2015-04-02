@@ -42,7 +42,7 @@ void epoll_loop(epoll_t *et)
 		et->nready_ = nready;
 }
 
-void epoll_handle_fd(epoll_t *et, THREADPOOL::CThread_pool& pool, EXECUTE::CRun& arun)
+void epoll_handle_fd(epoll_t *et, THREADPOOL::CThread_pool& pool, EXECUTE::CRun& arun, Text& text)
 {
 	int i;
 	for(i = 0; i < et->nready_; ++i)
@@ -80,11 +80,11 @@ void epoll_handle_fd(epoll_t *et, THREADPOOL::CThread_pool& pool, EXECUTE::CRun&
 				//用户逻辑
 				//  printf("receive msg : %d\n", nread);
 				std::string val = recvbuf;
-				EXECUTE::CThread_execute* ptr = new EXECUTE::CThread_execute(val);
-				cout << "--send to client: " << ::write(fd, recvbuf, strlen(recvbuf)) 
-					<< " bytes " << endl;
+				EXECUTE::CThread_execute* ptr = new EXECUTE::CThread_execute(val, text);
 				pool.m_que.produce(ptr);
 				arun.run();
+				cout << "--send to client: " << ::write(fd, recvbuf, strlen(recvbuf)) 
+					<< " bytes " << endl;
 				//处理完之后把结果发给客户端
 				//send_msg_with_len(fd, recvbuf, nread);
 

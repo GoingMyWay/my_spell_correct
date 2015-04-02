@@ -8,6 +8,7 @@
 #include"mutex.h"
 #include"execute.h"
 #include"sysutil.h"
+#include"text.h"
 
 using std::cout;
 using std::endl;
@@ -25,7 +26,7 @@ typedef struct {
 
 void epoll_init(epoll_t *et, int listenfd, callback_t callback);
 void epoll_loop(epoll_t *et);
-void epoll_handle_fd(epoll_t *et, THREADPOOL::CThread_pool& pool, EXECUTE::CRun& arun);
+void epoll_handle_fd(epoll_t *et, THREADPOOL::CThread_pool& pool, EXECUTE::CRun& arun, Text& text);
 void epoll_destroy(epoll_t *et);
 
 

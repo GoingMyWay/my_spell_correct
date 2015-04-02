@@ -49,7 +49,7 @@ int main(int argc, char* argv[])
 	while(1)
 	{
 		epoll_loop(&et);
-		epoll_handle_fd(&et, pool, arun);
+		epoll_handle_fd(&et, pool, arun, text);
 	}
 
 	epoll_destroy(&et);
