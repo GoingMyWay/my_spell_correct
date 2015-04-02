@@ -19,10 +19,11 @@ int main(int argc, char** argv)
 	ClientSocket cltSock;
 	cltSock.init(IPPROTO_TCP);
 	cltSock.connect(addr);
-
 	SocketIO sio(cltSock.get_socket());
+
 	char sendbuf[1024];
 	char recvbuf[1024];
+
 	while(printf("please inpute:"), memset(sendbuf, 0, sizeof(sendbuf)),gets(sendbuf)!=NULL)
 	{
 		int len = sio.writen(sendbuf, strlen(sendbuf));
@@ -32,4 +33,5 @@ int main(int argc, char** argv)
 		::read(cltSock.get_socket(), recvbuf, sizeof(sendbuf));
 		printf("recv from server: %s\n", recvbuf);
 	}
+	return 0;
 }

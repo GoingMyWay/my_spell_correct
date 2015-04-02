@@ -11,6 +11,11 @@
 #include"cond.h"
 #include<queue>
 #include<iostream>
+#include<map>
+#include<string>
+
+using std::map;
+using std::string;
 
 namespace QUEUE
 {

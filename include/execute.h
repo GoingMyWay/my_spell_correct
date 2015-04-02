@@ -13,6 +13,13 @@
 #include<stdlib.h>
 #include<string.h>
 #include<string>
+#include<map>
+
+using std::map;
+using std::string;
+using std::cout;
+using std::endl;
+
 namespace QUEUQE
 {
 	class CTask;
@@ -24,18 +31,18 @@ namespace EXECUTE
 	class CThread_execute : public QUEUE::CQueue::CTask
 	{
 		public:
-			CThread_execute(std::string val) : m_val(val) {}
+			CThread_execute(string val) : m_val(val) {}
 			CThread_execute() {}
 			void execute()
 			{
-				std::cout << "exe consume value: " << m_val << std::endl;
+				cout << "search " << m_val <<  " result is " << endl;
 			}
 
 		private:
-			std::string m_val;
+			string m_val;
 	};
 	
-	class CRun:public THREAD::CThread_RUN, public EXECUTE::CThread_execute
+	class CRun : public THREAD::CThread_RUN, public EXECUTE::CThread_execute
 	{
 		public:
 			CRun(QUEUE::CQueue* pq) : m_pq(pq) {}
@@ -47,7 +54,7 @@ namespace EXECUTE
 					QUEUE::CQueue::CPtask task;
 					if (m_pq->consume(&task) == false)
 					{
-						std::cout << "false" << std::endl;
+						cout << "false" << endl;
 						return ;
 					}
 					task->execute();

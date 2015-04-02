@@ -23,6 +23,11 @@ namespace COND
 					throw std::runtime_error("cond init");
 				}
 			}
+			~CCond()
+			{
+				pthread_cond_destroy(&m_cond);
+			}
+
 			void wait()
 			{
 				pthread_cond_wait(&m_cond, &m_mutex.m_mutex);
@@ -34,10 +39,6 @@ namespace COND
 			void notifyall()
 			{
 				pthread_cond_broadcast(&m_cond);
-			}
-			~CCond()
-			{
-				pthread_cond_destroy(&m_cond);
 			}
 		private:
 			MUTEX::CMutex& m_mutex;

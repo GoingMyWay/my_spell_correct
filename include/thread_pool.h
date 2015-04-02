@@ -24,6 +24,8 @@ namespace THREADPOOL
 		public:
 			CThread_pool(int nworkers = 10, int ncapacity = 10)
 				: m_thread_pool(nworkers), m_que(ncapacity) {}
+			~CThread_pool() {}
+
 			void on(THREAD::CThread_RUN* thread_run)
 			{
 				if(m_flag == false)
@@ -43,7 +45,6 @@ namespace THREADPOOL
 					m_flag = false;
 				}
 			}
-			~CThread_pool() {}
 			QUEUE::CQueue m_que;
 		private:
 			bool m_flag;
