@@ -25,7 +25,7 @@ namespace QUEUE
 			class CTask
 			{
 				public:
-					virtual void execute() = 0;
+					virtual string execute() = 0;
 			};
 			class CPtask 
 			{

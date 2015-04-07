@@ -21,7 +21,7 @@ namespace THREAD
 	class CThread_RUN
 	{
 		public:
-			virtual void run() = 0;
+			virtual string run() = 0;
 	};
 
 	class CThread

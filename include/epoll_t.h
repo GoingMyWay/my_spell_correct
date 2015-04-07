@@ -4,6 +4,7 @@
 #include<sys/epoll.h>
 #include<iostream>
 #include<map>
+#include<string>
 #include"thread_pool.h"
 #include"mutex.h"
 #include"execute.h"
@@ -13,6 +14,7 @@
 using std::cout;
 using std::endl;
 using std::map;
+using std::string;
 typedef void (*callback_t) (const char *, size_t cnt, int fd);
 
 typedef struct {

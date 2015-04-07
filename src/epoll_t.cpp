@@ -79,11 +79,11 @@ void epoll_handle_fd(epoll_t *et, THREADPOOL::CThread_pool& pool, EXECUTE::CRun&
 				cout << "recv " << nread << " bytes" << endl;
 				//用户逻辑
 				//  printf("receive msg : %d\n", nread);
-				std::string val = recvbuf;
+				string val = recvbuf;
 				EXECUTE::CThread_execute* ptr = new EXECUTE::CThread_execute(val, text);
 				pool.m_que.produce(ptr);
-				arun.run();
-				cout << "--send to client: " << ::write(fd, recvbuf, strlen(recvbuf)) 
+				string res(arun.run());
+				cout << "--send to client: " << ::write(fd, res.c_str(), res.size()) 
 					<< " bytes " << endl;
 				//处理完之后把结果发给客户端
 				//send_msg_with_len(fd, recvbuf, nread);
