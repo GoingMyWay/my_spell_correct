@@ -1,4 +1,5 @@
 #include"min_edict_dist.h"
+
 int Cal_dist(const char* pstr1, int len1, const char* pstr2, int len2)
 {
 	int dp[len1+1][len2+1];
