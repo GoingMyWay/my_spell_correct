@@ -8,7 +8,7 @@
 #include"epoll_t.h"
 
 #define ERR_EXIT(m)\
-	d0{\
+	do{\
 		perror(m);\
 		exit(EXIT_FAILURE);\
 	}while(0)
